@@ -1,0 +1,14 @@
+[
+  {
+    "computerName": "Acer",
+    "noOfComputerFound": 3
+  },
+  {
+    "computerName": "Amstrad",
+    "noOfComputerFound": 4
+  },
+  {
+    "computerName": "BlackBerry",
+    "noOfComputerFound": 2
+  }
+]
