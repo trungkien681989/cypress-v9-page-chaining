@@ -24,13 +24,13 @@ The steps below will take you all the way through setup and running the tests. Y
 ### 1. Open Cypress and select a test to run
 ```npm run cypress:open```
 
-![cypress-open](https://user-images.githubusercontent.com/49904115/189493174-07c4534d-34bb-4499-a50b-c7f579d01558.gif)
+![cypress-open](https://user-images.githubusercontent.com/49904115/189499145-1d7104fa-6f0d-48e1-8467-7914e48fa862.gif)
 
 
 ### 2. Run all tests (headless)
 ```npm run cypress:run```
 
-![cypress-run](https://user-images.githubusercontent.com/49904115/189493192-9992c0a0-164f-4006-a2c5-3dff4e6f7c9f.gif)
+![cypress-run](https://user-images.githubusercontent.com/49904115/189499398-179543de-d5aa-411d-b8ba-3a4f74821e14.gif)
 
 
 ## Help!
