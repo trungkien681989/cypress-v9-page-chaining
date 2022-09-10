@@ -5,13 +5,57 @@ import EditComputerPage from './edit-computer-page';
 
 export default class HomePage extends CommonPage {
   // Locators
+  // =================================================================
   numberOfComputerFoundText = '#main h1';
   addNewComputerButton = '#add';
   filterByNameText = '#searchbox';
   filterByNameButton = '#searchsubmit';
   computersTable = 'table.computers.zebra-striped';
 
-  // Functions
+  // High level functions
+  // =================================================================
+  validateComputerCreated(computerName, computerInfo) {
+    this
+      .validateAlertMessage(`Done! Computer ${computerName} has been created`)
+      .filterComputer(computerName)
+      .validateNumberOfComputerFound(1)
+      .validateFilterResult(
+        1,
+        computerName,
+        computerInfo.introducedDate,
+        computerInfo.discontinuedDate,
+        computerInfo.company,
+      );
+    return this;
+  }
+
+  validateComputerEdited(originalComputerName, editedComputerName, computerInfo) {
+    this
+      .validateAlertMessage(`Done! Computer ${editedComputerName} has been updated`)
+      .filterComputer(originalComputerName)
+      .validateNumberOfComputerFound(0)
+      .filterComputer(editedComputerName)
+      .validateNumberOfComputerFound(1)
+      .validateFilterResult(
+        1,
+        editedComputerName,
+        computerInfo.introducedDate,
+        computerInfo.discontinuedDate,
+        computerInfo.company,
+      );
+    return this;
+  }
+
+  validateComputerDeleted(computerName) {
+    this
+      .validateAlertMessage('Done! Computer has been deleted')
+      .filterComputer(computerName)
+      .validateNumberOfComputerFound(0);
+    return this;
+  }
+
+  // Interaction functions
+  // =================================================================
   addNewComputer() {
     cy.clickElement(this.addNewComputerButton);
     return new NewComputerPage();
@@ -28,18 +72,17 @@ export default class HomePage extends CommonPage {
     return this;
   }
 
+  // Validation functions
+  // =================================================================
   validateNumberOfComputerFound(number) {
-    if (number === 1) {
+    if (number === 0) {
+      cy.validateText(this.numberOfComputerFoundText, 'No computers found');
+      cy.contains('Nothing to display').should('be.visible');
+    } else if (number === 1) {
       cy.validateText(this.numberOfComputerFoundText, 'One computer found');
     } else {
       cy.validateText(this.numberOfComputerFoundText, `${number} computers found`);
     }
-    return this;
-  }
-
-  validateNoComputerFound() {
-    cy.validateText(this.numberOfComputerFoundText, 'No computers found');
-    cy.contains('Nothing to display').should('be.visible');
     return this;
   }
 

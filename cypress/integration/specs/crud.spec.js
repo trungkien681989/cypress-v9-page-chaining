@@ -1,54 +1,29 @@
 import HomePage from '../pages/home-page';
 
-const homePage = new HomePage();
-let newComputerName;
-let editedComputerName;
+// const homePage = new HomePage();
 
-describe('CRUD computer', () => {
+describe('Test add, edit, delete a computer', () => {
   before(() => {
     cy.openComputersDatabaseApp();
   });
 
-  it('add a new computer', () => {
+  it('add, edit, delete a computer', () => {
     cy.fixture('computer-info').then((computer) => {
-      newComputerName = `${computer.add.name}-${Math.floor(Math.random() * 1000000000)}`;
-      homePage
+      const uniqueId = Math.floor(Math.random() * 1000000000);
+      const newComputerInfo = computer.new;
+      const newComputerName = `${newComputerInfo.name}-${uniqueId}`;
+      const editedComputerInfo = computer.edit;
+      const editedComputerName = `${editedComputerInfo.name}-${uniqueId}`;
+      new HomePage()
         .addNewComputer()
-        .fillComputerInfo(newComputerName, computer.add.introducedDate,
-          computer.add.discontinuedDate, computer.add.company)
-        .createComputer()
-        .validateAlertMessage(`Done! Computer ${newComputerName} has been created`)
-        .filterComputer(newComputerName)
-        .validateNumberOfComputerFound(1)
-        .validateFilterResult(1, newComputerName, computer.add.introducedDate,
-          computer.add.discontinuedDate, computer.add.company);
-    });
-  });
-
-  it('edit a computer', () => {
-    cy.fixture('computer-info').then((computer) => {
-      editedComputerName = `${computer.edit.name}-${Math.floor(Math.random() * 1000000000)}`;
-      homePage
+        .createComputer(newComputerName, newComputerInfo)
+        .validateComputerCreated(newComputerName, newComputerInfo)
         .selectComputer(newComputerName)
-        .fillComputerInfo(editedComputerName, computer.edit.introducedDate,
-          computer.edit.discontinuedDate, computer.edit.company)
-        .saveComputer()
-        .validateAlertMessage(`Done! Computer ${editedComputerName} has been updated`)
-        .filterComputer(newComputerName)
-        .validateNoComputerFound()
-        .filterComputer(editedComputerName)
-        .validateNumberOfComputerFound(1)
-        .validateFilterResult(1, editedComputerName, computer.edit.introducedDate,
-          computer.edit.discontinuedDate, computer.edit.company);
+        .editComputer(editedComputerName, editedComputerInfo)
+        .validateComputerEdited(newComputerName, editedComputerName, editedComputerInfo)
+        .selectComputer(editedComputerName)
+        .deleteComputer()
+        .validateComputerDeleted(editedComputerName);
     });
-  });
-
-  it('delete a computer', () => {
-    homePage
-      .selectComputer(editedComputerName)
-      .deleteComputer()
-      .validateAlertMessage('Done! Computer has been deleted')
-      .filterComputer(editedComputerName)
-      .validateNoComputerFound();
   });
 });

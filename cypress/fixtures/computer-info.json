@@ -1,6 +1,6 @@
 {
-  "add": {
-    "name": "OOLIO-ADD",
+  "new": {
+    "name": "OOLIO-NEW",
     "introducedDate": "2022-02-20",
     "discontinuedDate": "2033-03-10",
     "company": "IBM"

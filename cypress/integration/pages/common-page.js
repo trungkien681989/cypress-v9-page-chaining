@@ -1,8 +1,10 @@
 export default class CommonPage {
   // Locators
+  // =================================================================
   alertMessage = 'div.alert-message.warning';
 
-  // Functions
+  // Validation Functions
+  // =================================================================
   validateAlertMessage(message) {
     cy.validateTextContains(this.alertMessage, message);
     return this;

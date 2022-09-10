@@ -1,12 +1,14 @@
 export default class ComputerPage {
   // Locators
+  // =================================================================
   computerNameText = '#name';
   introducedDateText = '#introduced';
   discontinuedDateText = '#discontinued';
   companySelect = '#company';
   cancelButton = 'a.btn';
 
-  // Functions
+  // Interaction Functions
+  // =================================================================
   fillComputerInfo(computerName, introducedDate, discontinueDate, company) {
     cy.clearAndType(this.computerNameText, computerName);
     cy.clearAndType(this.introducedDateText, introducedDate);

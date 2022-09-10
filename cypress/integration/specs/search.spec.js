@@ -2,7 +2,7 @@ import HomePage from '../pages/home-page';
 
 const homePage = new HomePage();
 
-describe('Verify search computer feature', () => {
+describe('Test search computer feature', () => {
   before(() => {
     cy.openComputersDatabaseApp();
   });
