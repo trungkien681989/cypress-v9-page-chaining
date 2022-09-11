@@ -1,7 +1,5 @@
 import HomePage from '../pages/home-page';
 
-const homePage = new HomePage();
-
 describe('Test search computer feature', () => {
   before(() => {
     cy.openComputersDatabaseApp();
@@ -11,7 +9,7 @@ describe('Test search computer feature', () => {
     cy.fixture('computer-search').then((computers) => {
       // eslint-disable-next-line no-plusplus
       for (let i = 0; i < computers.length; i++) {
-        homePage
+        new HomePage()
           .filterComputer(computers[i].computerName)
           .validateNumberOfComputerFound(computers[i].noOfComputerFound)
           .validateComputerNameShowsInResults(computers[i].computerName);

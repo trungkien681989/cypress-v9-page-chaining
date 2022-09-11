@@ -4,11 +4,8 @@
     "browser": true,
     "es2021": true
   },
-  "plugins": [
-    "cypress"
-  ],
+  "plugins": [],
   "extends": [
-    "plugin:cypress/recommended",
     "plugin:chai-friendly/recommended",
     "eslint:recommended",
     "airbnb-base"

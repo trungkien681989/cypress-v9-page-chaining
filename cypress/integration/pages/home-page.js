@@ -29,7 +29,7 @@ export default class HomePage extends CommonPage {
     return this;
   }
 
-  validateComputerEdited(originalComputerName, editedComputerName, computerInfo) {
+  validateComputerEdited(originalComputerName, editedComputerName, editedComputerInfo) {
     this
       .validateAlertMessage(`Done! Computer ${editedComputerName} has been updated`)
       .filterComputer(originalComputerName)
@@ -39,9 +39,9 @@ export default class HomePage extends CommonPage {
       .validateFilterResult(
         1,
         editedComputerName,
-        computerInfo.introducedDate,
-        computerInfo.discontinuedDate,
-        computerInfo.company,
+        editedComputerInfo.introducedDate,
+        editedComputerInfo.discontinuedDate,
+        editedComputerInfo.company,
       );
     return this;
   }

@@ -6,7 +6,7 @@ export default class NewComputerPage extends ComputerPage {
   // =================================================================
   createComputerButton = 'input[value="Create this computer"]';
 
-  // Interaction Functions
+  // High level functions
   // =================================================================
   createComputer(computerName, computerInfo) {
     this
@@ -20,6 +20,8 @@ export default class NewComputerPage extends ComputerPage {
     return new HomePage();
   }
 
+  // Interaction functions
+  // =================================================================
   clickCreateComputerButton() {
     cy.clickElement(this.createComputerButton);
     return new HomePage();

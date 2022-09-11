@@ -7,7 +7,7 @@ export default class EditComputerPage extends ComputerPage {
   saveComputerButton = 'input[value="Save this computer"]';
   deleteComputerButton = 'input[value="Delete this computer"]';
 
-  // Interaction Functions
+  // High level functions
   // =================================================================
   editComputer(computerName, computerInfo) {
     this
@@ -21,6 +21,8 @@ export default class EditComputerPage extends ComputerPage {
     return new HomePage();
   }
 
+  // Interaction Functions
+  // =================================================================
   deleteComputer() {
     cy.clickElement(this.deleteComputerButton);
     return new HomePage();

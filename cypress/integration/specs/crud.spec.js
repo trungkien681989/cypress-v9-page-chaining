@@ -1,7 +1,5 @@
 import HomePage from '../pages/home-page';
 
-// const homePage = new HomePage();
-
 describe('Test add, edit, delete a computer', () => {
   before(() => {
     cy.openComputersDatabaseApp();
