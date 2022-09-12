@@ -12,7 +12,8 @@ describe('Test add, edit, delete a computer', () => {
       const newComputerName = `${newComputerInfo.name}-${uniqueId}`;
       const editedComputerInfo = computer.edit;
       const editedComputerName = `${editedComputerInfo.name}-${uniqueId}`;
-      new HomePage()
+      const homePgae = new HomePage();
+      homePgae
         .addNewComputer()
         .createComputer(newComputerName, newComputerInfo)
         .validateComputerCreated(newComputerName, newComputerInfo)

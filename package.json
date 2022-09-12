@@ -41,6 +41,9 @@
   },
   "scripts": {
     "cypress:open": "./node_modules/.bin/cypress open",
-    "cypress:run": "./node_modules/.bin/cypress run"
+    "cypress:run": "./node_modules/.bin/cypress run",
+    "cypress:merge": "mochawesome-merge ./cypress/reports/html/.jsons/*.json -o ./cypress/reports/merge/output.json",
+    "cypress:generate": "marge cypress/reports/merge/output.json -f output -o ./cypress/reports",
+    "delete-reports": "node deleteReports.js"
   }
 }

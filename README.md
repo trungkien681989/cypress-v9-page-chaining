@@ -32,6 +32,20 @@ The steps below will take you all the way through setup and running the tests. Y
 
 ![cypress-run](https://user-images.githubusercontent.com/49904115/189499398-179543de-d5aa-411d-b8ba-3a4f74821e14.gif)
 
+## Mocha Reporting
+For reporting, this repo utilizes mocha via cypress-mochawesome-reporter.
+
+Generating reports locally after a run with the following steps, scripts can be taken from the `package.json` file:
+
+- execute ```npm run cypress:run```
+- next ```npm run cypress:merge```
+- then ```npm run cypress:generate```
+
+This will place an `output.html` file in the reports directory that can be viewed and show the run details.
+
+<img width="1396" alt="Screen Shot 2022-09-11 at 11 04 08" src="https://user-images.githubusercontent.com/49904115/189512080-4a6f565c-2e26-408e-baf3-9dde494c57d6.png">
+
+Finally execute ```npm run delete-reports``` to clean up the reports
 
 ## Help!
 **If you get stuck, here is more help:**
