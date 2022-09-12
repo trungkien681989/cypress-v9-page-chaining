@@ -21,6 +21,14 @@ export default class EditComputerPage extends ComputerPage {
     return new HomePage();
   }
 
+  validateComputerInfo(computerName, computerInfo) {
+    cy.validateValue(this.computerNameText, computerName);
+    cy.validateValue(this.introducedDateText, computerInfo.introducedDate);
+    cy.validateValue(this.discontinuedDateText, computerInfo.discontinuedDate);
+    cy.get(this.companySelect).find('option:selected').should('have.text', computerInfo.company);
+    return this;
+  }
+
   // Interaction Functions
   // =================================================================
   deleteComputer() {

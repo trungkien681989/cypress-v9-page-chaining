@@ -12,14 +12,16 @@ describe('Test add, edit, delete a computer', () => {
       const newComputerName = `${newComputerInfo.name}-${uniqueId}`;
       const editedComputerInfo = computer.edit;
       const editedComputerName = `${editedComputerInfo.name}-${uniqueId}`;
-      const homePgae = new HomePage();
-      homePgae
+      const homePage = new HomePage();
+      homePage
         .addNewComputer()
         .createComputer(newComputerName, newComputerInfo)
         .validateComputerCreated(newComputerName, newComputerInfo)
+        .filterComputer(newComputerName)
         .selectComputer(newComputerName)
         .editComputer(editedComputerName, editedComputerInfo)
         .validateComputerEdited(newComputerName, editedComputerName, editedComputerInfo)
+        .filterComputer(editedComputerName)
         .selectComputer(editedComputerName)
         .deleteComputer()
         .validateComputerDeleted(editedComputerName);

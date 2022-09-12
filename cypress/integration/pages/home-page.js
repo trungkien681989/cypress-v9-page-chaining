@@ -25,7 +25,10 @@ export default class HomePage extends CommonPage {
         computerInfo.introducedDate,
         computerInfo.discontinuedDate,
         computerInfo.company,
-      );
+      )
+      .selectComputer(computerName)
+      .validateComputerInfo(computerName, computerInfo)
+      .clickCancelButton();
     return this;
   }
 
@@ -42,7 +45,10 @@ export default class HomePage extends CommonPage {
         editedComputerInfo.introducedDate,
         editedComputerInfo.discontinuedDate,
         editedComputerInfo.company,
-      );
+      )
+      .selectComputer(editedComputerName)
+      .validateComputerInfo(editedComputerName, editedComputerInfo)
+      .clickCancelButton();
     return this;
   }
 

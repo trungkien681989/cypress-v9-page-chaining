@@ -1,3 +1,5 @@
+import HomePage from './home-page';
+
 export default class ComputerPage {
   // Locators
   // =================================================================
@@ -15,5 +17,10 @@ export default class ComputerPage {
     cy.clearAndType(this.discontinuedDateText, discontinueDate);
     cy.selectElement(this.companySelect, company);
     return this;
+  }
+
+  clickCancelButton() {
+    cy.clickElement(this.cancelButton);
+    return new HomePage();
   }
 }

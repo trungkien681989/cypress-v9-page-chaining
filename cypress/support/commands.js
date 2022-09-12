@@ -122,6 +122,17 @@ Cypress.Commands.add('validateText', (selector, value) => {
 
 /**
  * @memberOf cy
+ * @method validateValue
+ * @param {string} selector
+ * @param {string} value
+ * @returns Chainable
+ */
+ Cypress.Commands.add('validateValue', (selector, value) => {
+  cy.get(selector).should('be.visible').should('have.value', value);
+});
+
+/**
+ * @memberOf cy
  * @method validateTextContains
  * @param {string} selector
  * @param {string} value

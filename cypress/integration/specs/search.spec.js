@@ -9,8 +9,8 @@ describe('Test search computer feature', () => {
     cy.fixture('computer-search').then((computers) => {
       // eslint-disable-next-line no-plusplus
       for (let i = 0; i < computers.length; i++) {
-        const homePgae = new HomePage();
-        homePgae
+        const homePage = new HomePage();
+        homePage
           .filterComputer(computers[i].computerName)
           .validateNumberOfComputerFound(computers[i].noOfComputerFound)
           .validateComputerNameShowsInResults(computers[i].computerName);
